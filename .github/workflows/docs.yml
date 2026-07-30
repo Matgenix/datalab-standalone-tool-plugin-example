@@ -1,0 +1,36 @@
+name: Documentation
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+      - uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.11.x"
+          enable-cache: true
+      - run: uv sync --locked --all-extras --dev
+      - run: uv run mkdocs build --strict
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name == 'push'
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
+        if: github.event_name == 'push'

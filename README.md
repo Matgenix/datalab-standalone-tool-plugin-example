@@ -1,28 +1,27 @@
-# datalab Hello Standalone Tool
+<div align="center"><i>datalab-standalone-tool-plugin-example</i></div>
 
-Minimal *standalone tool* plugin. It opens in a new tab, exchanges a *launch code*,
-and prints one datalab-backed message. datalab automatically protects its
-*provider blueprint* with the active *browser session*; the resulting *tool access
-token* accesses *samples* through the normal *permission-aware API*.
+<div align="center">
+<a href="https://github.com/Matgenix/datalab-standalone-tool-plugin-example/actions/workflows/ci.yml"><img src="https://github.com/Matgenix/datalab-standalone-tool-plugin-example/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+<a href="https://github.com/Matgenix/datalab-standalone-tool-plugin-example/releases"><img src="https://badgen.net/github/release/Matgenix/datalab-standalone-tool-plugin-example?icon=github&color=blue" alt="Release"></a>
+<a href="https://github.com/Matgenix/datalab-standalone-tool-plugin-example"><img src="https://badgen.net/github/license/Matgenix/datalab-standalone-tool-plugin-example?icon=license&color=purple" alt="License"></a>
+<a href="https://Matgenix.github.io/datalab-standalone-tool-plugin-example/"><img src="https://github.com/Matgenix/datalab-standalone-tool-plugin-example/actions/workflows/docs.yml/badge.svg" alt="Documentation"></a>
+</div>
 
-## Local installation
+datalab-standalone-tool-plugin-example is a
+[datalab](https://datalab-org.io) standalone tool plugin generated with the
+[datalab tool plugin template](https://github.com/Matgenix/datalab-tool-plugin-template).
 
-Add the package to the root `plugins.toml`:
+This minimal example opens in a new tab, exchanges a single-use launch code,
+and uses its temporary tool access token to display one permission-filtered
+datalab result.
 
-```toml
-dependencies = ["datalab-hello-standalone-tool"]
+Follow the
+[standalone tool plugin tutorial](https://docs.datalab-org.io/plugin-development/standalone-tool-plugin/)
+for a step-by-step walkthrough. See [INSTALL.md](INSTALL.md) for installation
+and development commands.
 
-[tool.uv.sources]
-datalab-hello-standalone-tool = { path = "dev-repos/datalab-standalone-tool-plugin-example", editable = true }
-```
+Deployment administrators must review this trusted plugin and its dependencies
+before installation or upgrade.
 
-Then install datalab with plugins:
-
-```shell
-cd pydatalab
-uv run invoke dev.install
-```
-
-See the
-[standalone Tool plugin tutorial](https://docs.datalab-org.io/plugin-development/standalone-tool-plugin/)
-for a step-by-step explanation.
+Releases are created from semantic version tags on
+[GitHub](https://github.com/Matgenix/datalab-standalone-tool-plugin-example/releases).

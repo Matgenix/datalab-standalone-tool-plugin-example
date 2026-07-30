@@ -2,7 +2,6 @@
 
 from flask import Blueprint, jsonify, request
 from flask_login import current_user
-
 from pydatalab.tools import (
     StandaloneToolUI,
     ToolContext,
@@ -11,6 +10,8 @@ from pydatalab.tools import (
     ToolProvider,
     exchange_launch_code,
 )
+
+from ._version import __version__
 
 TOOL_ID = "hello-standalone"
 TOOL_BLUEPRINT = Blueprint(
@@ -50,7 +51,7 @@ class HelloStandaloneToolProvider(ToolProvider):
     metadata = ToolMetadata(
         name="Hello standalone",
         description="Open a new tab and call datalab with a tool access token.",
-        version="0.1.0",
+        version=__version__,
         icon="external-link-alt",
         ui=StandaloneToolUI(),
     )

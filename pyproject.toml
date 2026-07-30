@@ -1,22 +1,81 @@
+[build-system]
+requires = ["setuptools>=77", "wheel", "setuptools-scm>=8.1,<10"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "datalab-hello-standalone-tool"
-version = "0.1.0"
+dynamic = ["version"]
 description = "A minimal standalone Hello World tool for datalab"
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.10,<3.12"
 authors = [
     { name = "datalab development team", email = "dev@datalab-org.io" },
 ]
-dependencies = [
-    "datalab-server",
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
 ]
+dependencies = []
 
 [project.entry-points."pydatalab.tools"]
 "hello-standalone" = "datalab_hello_standalone_tool.provider:HelloStandaloneToolProvider"
 
-[build-system]
-requires = ["setuptools>=77", "wheel"]
-build-backend = "setuptools.build_meta"
+[project.urls]
+Homepage = "https://Matgenix.github.io/datalab-standalone-tool-plugin-example/"
+Documentation = "https://Matgenix.github.io/datalab-standalone-tool-plugin-example/"
+Repository = "https://github.com/Matgenix/datalab-standalone-tool-plugin-example"
+Changelog = "https://github.com/Matgenix/datalab-standalone-tool-plugin-example/releases"
 
 [tool.setuptools.package-data]
-"datalab_hello_standalone_tool" = ["static/*.html"]
+"datalab_hello_standalone_tool" = ["py.typed", "static/*"]
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
+fallback_version = "0.1.0"
+version_scheme = "post-release"
+
+[dependency-groups]
+dev = [
+    "datalab-server[server]",
+    "mkdocs>=1.6,<2",
+    "mkdocs-material>=9.5,<10",
+    "mkdocstrings[python]>=0.30,<1",
+    "pre-commit>=4,<5",
+    "pytest>=8,<9",
+    "pytest-cov>=5,<8",
+]
+
+[tool.uv.sources]
+datalab-server = { git = "https://github.com/Matgenix/datalab.git", rev = "cfa8a98957a39f2ba861a74a66ff95c7fc38c813", subdirectory = "pydatalab" }
+
+[tool.coverage.run]
+branch = true
+source = ["datalab_hello_standalone_tool"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+
+[tool.mypy]
+follow_imports = "skip"
+ignore_missing_imports = true
+python_version = "3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "Q", "W"]
