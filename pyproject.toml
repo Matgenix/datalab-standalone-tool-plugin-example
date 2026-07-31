@@ -55,7 +55,7 @@ dev = [
 ]
 
 [tool.uv.sources]
-datalab-server = { git = "https://github.com/Matgenix/datalab.git", rev = "cfa8a98957a39f2ba861a74a66ff95c7fc38c813", subdirectory = "pydatalab" }
+datalab-server = { git = "https://github.com/Matgenix/datalab.git", branch = "dw/analysis_tools", subdirectory = "pydatalab" }
 
 [tool.coverage.run]
 branch = true

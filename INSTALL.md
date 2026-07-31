@@ -19,11 +19,12 @@ Add the plugin to the datalab checkout's root `plugins.toml`:
 dependencies = ["datalab-hello-standalone-tool"]
 
 [tool.uv.sources]
-datalab-hello-standalone-tool = { path = "dev-repos/datalab-standalone-tool-plugin-example", editable = true }
+datalab-hello-standalone-tool = { git = "https://github.com/Matgenix/datalab-standalone-tool-plugin-example.git" }
 ```
 
 Preserve existing dependencies and source entries when merging this
-configuration. Then install the configured plugins:
+configuration. Pin a release tag or commit for reproducible deployments. Then
+install the configured plugins:
 
 ```shell
 cd pydatalab
