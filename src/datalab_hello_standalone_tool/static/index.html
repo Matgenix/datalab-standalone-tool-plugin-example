@@ -52,8 +52,12 @@
           currentUser.role ||
           "datalab user";
         const count = samples.samples?.length || 0;
+        const selectedCount = exchange.selection?.items?.length || 0;
+        const selectionMessage = selectedCount
+          ? ` This launch contains ${selectedCount} selected item(s).`
+          : "";
         document.querySelector("#message").textContent =
-          `Hello ${name}. You can access ${count} sample(s).`;
+          `Hello ${name}. You can access ${count} sample(s).${selectionMessage}`;
       }
 
       main().catch((error) => {

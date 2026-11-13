@@ -3,6 +3,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user
 from pydatalab.tools import (
+    ItemTableSelectionAction,
     StandaloneToolUI,
     ToolContext,
     ToolLaunchGrantIssuer,
@@ -39,7 +40,13 @@ def exchange():
     if result is None:
         return jsonify({"error": "Invalid or expired launch code"}), 400
 
-    response = jsonify({"tool_access_token": result.tool_session.tool_access_token})
+    response_data = {"tool_access_token": result.tool_session.tool_access_token}
+    if result.selection is not None:
+        response_data["selection"] = {
+            "action": result.selection.action_id,
+            "items": list(result.selection.item_refcodes),
+        }
+    response = jsonify(response_data)
     response.headers["Cache-Control"] = "no-store"
     return response, 200
 
@@ -52,8 +59,17 @@ class HelloStandaloneToolProvider(ToolProvider):
         name="Hello standalone",
         description="Open a new tab and call datalab with a tool access token.",
         version=__version__,
-        icon="external-link-alt",
+        icon="laptop-code",
         ui=StandaloneToolUI(),
+        launch_actions=(
+            ItemTableSelectionAction(
+                id="open-selected",
+                label="Open selected",
+                tables=("samples", "inventory", "collection-items"),
+                min_items=1,
+                max_items=20,
+            ),
+        ),
     )
     blueprint = TOOL_BLUEPRINT
 

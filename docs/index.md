@@ -7,7 +7,8 @@ standalone tool
 through the `pydatalab.tools` entry-point group.
 
 It demonstrates a single-use launch-code exchange and one permission-filtered
-API request using an in-memory temporary tool access token.
+API request using an in-memory temporary tool access token. Its selected-items
+action demonstrates how the same exchange returns the bound selection.
 
 See the
 [installation guide](https://github.com/Matgenix/datalab-standalone-tool-plugin-example/blob/main/INSTALL.md)

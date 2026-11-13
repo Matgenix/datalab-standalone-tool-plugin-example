@@ -13,7 +13,8 @@ datalab-standalone-tool-plugin-example is a
 
 This minimal example opens in a new tab, exchanges a single-use launch code,
 and uses its temporary tool access token to display one permission-filtered
-datalab result.
+datalab result. It can also be launched from a selected-items action and reads
+the selection returned by the exchange.
 
 Follow the
 [standalone tool plugin tutorial](https://docs.datalab-org.io/plugin-development/standalone-tool-plugin/)

@@ -10,6 +10,15 @@ tool_id: hello-standalone
 tool_name: Hello standalone
 tool_ui_kind: standalone
 tool_open_mode: new_tab
+add_item_table_action: true
+item_table_action_id: open-selected
+item_table_action_label: Open selected
+item_table_action_tables:
+  - samples
+  - inventory
+  - collection-items
+item_table_action_min_items: 1
+item_table_action_max_items: 20
 copyright_holder: Matgenix
 copyright_year: 2026
 conduct_contact: dev@datalab-org.io
