@@ -62,7 +62,17 @@ def test_exchange_rejects_missing_code_and_returns_no_store(monkeypatch):
             item_refcodes=("demo:one", "demo:two"),
         ),
     )
-    monkeypatch.setattr(provider_module, "exchange_launch_code", lambda *args, **kwargs: exchange)
+
+    def exchange_for_current_user(code, tool_id, client_id, *, expected_user_id):
+        assert (code, tool_id, client_id) == (
+            "launch-code",
+            "hello-standalone",
+            "hello-standalone",
+        )
+        assert expected_user_id == "user-id"
+        return exchange
+
+    monkeypatch.setattr(provider_module, "exchange_launch_code", exchange_for_current_user)
 
     client = app.test_client()
     assert client.post("/tool/exchange", json={}).status_code == 400

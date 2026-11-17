@@ -24,5 +24,9 @@ and development commands.
 Deployment administrators must review this trusted plugin and its dependencies
 before installation or upgrade.
 
+Production standalone launches must use HTTPS. HTTP is supported only for
+explicit loopback URLs during local development; private-LAN HTTP launch URLs
+are intentionally rejected by datalab.
+
 Releases are created from semantic version tags on
 [GitHub](https://github.com/Matgenix/datalab-standalone-tool-plugin-example/releases).
