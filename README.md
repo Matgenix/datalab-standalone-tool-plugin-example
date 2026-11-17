@@ -7,26 +7,19 @@
 <a href="https://Matgenix.github.io/datalab-standalone-tool-plugin-example/"><img src="https://github.com/Matgenix/datalab-standalone-tool-plugin-example/actions/workflows/docs.yml/badge.svg" alt="Documentation"></a>
 </div>
 
-datalab-standalone-tool-plugin-example is a
-[datalab](https://datalab-org.io) standalone tool plugin generated with the
+# Hello standalone
+
+This minimal, trusted standalone tool exchanges a one-use launch code for
+temporary datalab access, displays a permission-filtered result, and demonstrates
+a selected-items action. It is generated with the
 [datalab tool plugin template](https://github.com/Matgenix/datalab-tool-plugin-template).
 
-This minimal example opens in a new tab, exchanges a single-use launch code,
-and uses its temporary tool access token to display one permission-filtered
-datalab result. It can also be launched from a selected-items action and reads
-the selection returned by the exchange.
-
-Follow the
-[standalone tool plugin tutorial](https://docs.datalab-org.io/plugin-development/standalone-tool-plugin/)
-for a step-by-step walkthrough. See [INSTALL.md](INSTALL.md) for installation
-and development commands.
-
-Deployment administrators must review this trusted plugin and its dependencies
-before installation or upgrade.
-
-Production standalone launches must use HTTPS. HTTP is supported only for
-explicit loopback URLs during local development; private-LAN HTTP launch URLs
-are intentionally rejected by datalab.
+- **Users:** read the [Hello standalone user guide](https://matgenix.github.io/datalab-standalone-tool-plugin-example/).
+- **Deployment administrators:** follow [INSTALL.md](INSTALL.md).
+- **Developers:** follow the datalab
+  [standalone tutorial](https://docs.datalab-org.io/en/latest/plugin-development/standalone-tool-plugin/),
+  which walks through this repository, and use
+  [INSTALL.md](INSTALL.md#development-setup) for local commands.
 
 Releases are created from semantic version tags on
 [GitHub](https://github.com/Matgenix/datalab-standalone-tool-plugin-example/releases).
