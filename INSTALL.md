@@ -3,7 +3,11 @@
 This plugin runs trusted Python in the datalab API. Review the selected release
 and its dependencies before installation or upgrade. Production standalone
 launches require HTTPS; plain HTTP is accepted only for explicit loopback hosts
-during local development.
+during local development. A temporary trusted testing deployment can set
+`PYDATALAB_TOOLS__ALLOW_INSECURE_HTTP=true` to permit non-loopback HTTP launch
+URLs from every installed standalone provider. This does not weaken
+authentication, authorization, or token exchange, but HTTP can expose launch
+codes, tokens, and user data and must not be used in production.
 
 ## Install in datalab
 
