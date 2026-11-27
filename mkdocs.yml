@@ -1,5 +1,5 @@
 site_name: "datalab-standalone-tool-plugin-example"
-site_description: "A minimal standalone Hello World tool for datalab"
+site_description: "A standalone Hello World tool for datalab"
 site_url: "https://Matgenix.github.io/datalab-standalone-tool-plugin-example/"
 repo_name: "Matgenix/datalab-standalone-tool-plugin-example"
 repo_url: "https://github.com/Matgenix/datalab-standalone-tool-plugin-example"

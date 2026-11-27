@@ -1,3 +1,3 @@
 # API reference
 
-::: datalab_hello_standalone_tool.provider
+> **TODO:** Document the public interfaces of the real external application.

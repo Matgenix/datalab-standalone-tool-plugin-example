@@ -33,7 +33,25 @@ jobs:
           enable-cache: true
       - run: uv sync --locked --all-extras --dev
       - run: uv run pytest -rs -v
+      - run: uv run mkdocs build --strict
       - run: uv build
+      - name: Verify service-only wheel installation
+        run: |
+          if [ -f Dockerfile ]; then
+            python -m venv /tmp/service-only
+            wheel=$(find dist -name '*.whl' -print -quit)
+            /tmp/service-only/bin/pip install "${wheel}[service]"
+            package=$(basename "$(dirname "$(find src -name service.py -print -quit)")")
+            PACKAGE="$package" /tmp/service-only/bin/python -c "import importlib, os, sys; importlib.import_module(os.environ['PACKAGE'] + '.service'); assert 'pydatalab' not in sys.modules"
+          fi
+
+  external-image:
+    name: External service image
+    if: ${{ hashFiles('Dockerfile') != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: docker build -t datalab-standalone-tool:test .
 
   pre-commit:
     name: Pre-commit

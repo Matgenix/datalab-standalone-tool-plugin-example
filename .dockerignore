@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+.env
+.env.*
+!.env.example
+build
+dist
+site
+__pycache__
+*.egg-info
+*.pyc

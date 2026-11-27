@@ -9,17 +9,39 @@
 
 # Hello standalone
 
-This minimal, trusted standalone tool exchanges a one-use launch code for
-temporary datalab access, displays a permission-filtered result, and demonstrates
-a selected-items action. It is generated with the
+A standalone Hello World tool for datalab
+
+This is a trusted datalab
+standalone tool plugin
+generated with the
 [datalab tool plugin template](https://github.com/Matgenix/datalab-tool-plugin-template).
 
-- **Users:** read the [Hello standalone user guide](https://matgenix.github.io/datalab-standalone-tool-plugin-example/).
-- **Deployment administrators:** follow [INSTALL.md](INSTALL.md).
-- **Developers:** follow the datalab
-  [standalone tutorial](https://docs.datalab-org.io/en/latest/plugin-development/standalone-tool-plugin/),
-  which walks through this repository, and use
-  [INSTALL.md](INSTALL.md#development-setup) for local commands.
+
+This repository produces two separately started runtimes: a provider adapter
+installed in the Datalab API and an external web process on its own origin.
+
+> **TODO:** Replace this generated text with a short description of the real
+> application, its user workflow, and its architecture. Flask/Gunicorn are only
+> a replaceable starting point.
+
+
+## Documentation
+
+- **Users:** read the [Hello standalone user guide](https://Matgenix.github.io/datalab-standalone-tool-plugin-example/).
+- **Deployment administrators:** follow [INSTALL.md](INSTALL.md) for the exact
+  package and installation steps.
+- **Developers:** use [INSTALL.md](INSTALL.md#development-setup) for local setup
+  and the datalab
+  [tool plugin development guide](https://docs.datalab-org.io/en/latest/plugin-development/tool-plugin/)
+  for the provider, permissions, testing, and release workflow.
+
+Deployment administrators must review this plugin's source, dependencies,
+built assets, maintainers, and release provenance before installation or
+upgrade.
+
+See [INSTALL.md](INSTALL.md) for the generated development setup. Replace it
+with the real application's deployment documentation before release.
+
 
 Releases are created from semantic version tags on
 [GitHub](https://github.com/Matgenix/datalab-standalone-tool-plugin-example/releases).

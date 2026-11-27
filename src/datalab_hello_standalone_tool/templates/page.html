@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>External Datalab tool</title></head>
+<body>
+{% if page == "home" %}
+<h1>External Datalab tool</h1>
+<p>Launch this separate reference application from Datalab's Tools menu.</p>
+{% elif page == "error" %}
+<h1>Launch failed</h1>
+<p>Return to Datalab and launch the tool again.</p>
+{% elif page == "result" %}
+<h1>Hello {{ display_name }}.</h1>
+<p>The external Datalab request succeeded.</p>
+{% if selection %}<p>Selection <code>{{ selection.action }}</code> included {{ selection['items'] | length }} item(s): {% for item in selection['items'] %}<code>{{ item }}</code>{% if not loop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
+<p>This result is not stored. Refreshing requires a fresh Datalab launch.</p>
+{% else %}
+<p id="fragment-error" hidden>This launch is invalid. Return to Datalab and launch the tool again.</p>
+<noscript>JavaScript is required to continue this launch.</noscript>
+<form id="handoff" method="post" action="{{ action }}">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <input id="handoff-value" type="hidden" name="{{ field_name }}" value="">
+</form>
+<script nonce="{{ csp_nonce }}">
+"use strict";
+const fragment = window.location.hash.slice(1);
+history.replaceState(null, "", window.location.pathname);
+const expectedField = {{ field_name | tojson }};
+const submissionAllowed = {{ submission_allowed | tojson }};
+let malformed = fragment.length > 256 || /%(?![0-9A-Fa-f]{2})/.test(fragment);
+try {
+  if (!/^[\x00-\x7F]*$/.test(decodeURIComponent(fragment.replace(/\+/g, " ")))) malformed = true;
+} catch (_error) { malformed = true; }
+const entries = Array.from(new URLSearchParams(fragment).entries());
+const valid = submissionAllowed && !malformed && entries.length === 1 &&
+  entries[0][0] === expectedField && /^[A-Za-z0-9_-]{1,128}$/.test(entries[0][1]);
+if (valid) {
+  document.getElementById("handoff-value").value = entries[0][1];
+  document.getElementById("handoff").submit();
+} else {
+  document.getElementById("fragment-error").hidden = false;
+}
+</script>
+{% endif %}
+</body>
+</html>

@@ -1,6 +1,5 @@
-"""Hello World standalone datalab tool example."""
+"""A standalone Hello World tool for datalab"""
 
 from ._version import __version__
-from .provider import HelloStandaloneToolProvider
 
-__all__ = ("__version__", "HelloStandaloneToolProvider")
+__all__ = ("__version__",)

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "datalab-hello-standalone-tool"
 dynamic = ["version"]
-description = "A minimal standalone Hello World tool for datalab"
+description = "A standalone Hello World tool for datalab"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11,<3.12"
@@ -22,6 +22,14 @@ classifiers = [
 ]
 dependencies = []
 
+[project.optional-dependencies]
+service = [
+    "flask>=3.1,<4",
+    "gunicorn>=23,<24",
+    "httpx>=0.28,<1",
+]
+
+
 [project.entry-points."pydatalab.tools"]
 "hello-standalone" = "datalab_hello_standalone_tool.provider:HelloStandaloneToolProvider"
 
@@ -32,7 +40,7 @@ Repository = "https://github.com/Matgenix/datalab-standalone-tool-plugin-example
 Changelog = "https://github.com/Matgenix/datalab-standalone-tool-plugin-example/releases"
 
 [tool.setuptools.package-data]
-"datalab_hello_standalone_tool" = ["py.typed", "static/*"]
+"datalab_hello_standalone_tool" = ["py.typed", "templates/*.html"]
 
 
 [tool.setuptools.packages.find]
